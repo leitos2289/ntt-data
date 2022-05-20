@@ -1,0 +1,83 @@
+/*Creacin de la tabla persona*/
+CREATE TABLE `persona` (
+	`cpersona` INT(11) NOT NULL,
+	`direccion` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`edad` INT(11) NULL DEFAULT NULL,
+	`genero` VARCHAR(1) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`identificacion` VARCHAR(10) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`nombre` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`telefono` VARCHAR(10) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	PRIMARY KEY (`cpersona`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+/*Creacion de la tabla cliente*/
+CREATE TABLE `cliente` (
+	`contrasena` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`estado` BIT(1) NULL DEFAULT NULL,
+	`clienteid` INT(11) NOT NULL,
+	PRIMARY KEY (`clienteid`) USING BTREE,
+	CONSTRAINT `FKltuad7gvir4i2nu5wse9mnb8` FOREIGN KEY (`clienteid`) REFERENCES `pruebas`.`persona` (`cpersona`) ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+/*Creacion de la tabla cuentaId*/
+CREATE TABLE `cuentaid` (
+	`ccuenta` INT(11) NOT NULL,
+	PRIMARY KEY (`ccuenta`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+/*Creacion de la tabla cuenta*/
+CREATE TABLE `cuenta` (
+	`ccuenta` INT(11) NOT NULL,
+	`fhasta` DATETIME(6) NOT NULL,
+	`estado` BIT(1) NULL DEFAULT NULL,
+	`fmodificacion` DATETIME(6) NULL DEFAULT NULL,
+	`saldoinicial` DECIMAL(19,2) NULL DEFAULT NULL,
+	`tipocuenta` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`clienteid` INT(11) NOT NULL,
+	PRIMARY KEY (`ccuenta`, `fhasta`) USING BTREE,
+	INDEX `FKtiah1fi6lm797bbc6bkex91ie` (`clienteid`) USING BTREE,
+	CONSTRAINT `FK1x7mj3iih1qlvrj88x5u804ps` FOREIGN KEY (`ccuenta`) REFERENCES `pruebas`.`cuentaid` (`ccuenta`) ON UPDATE RESTRICT ON DELETE RESTRICT,
+	CONSTRAINT `FKtiah1fi6lm797bbc6bkex91ie` FOREIGN KEY (`clienteid`) REFERENCES `pruebas`.`cliente` (`clienteid`) ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+/*Creacion de la tabla mivimiento*/
+CREATE TABLE `movimiento` (
+	`ccuenta` INT(11) NOT NULL,
+	`cmovimiento` INT(11) NOT NULL,
+	`fecha` DATETIME(6) NULL DEFAULT NULL,
+	`saldo` DECIMAL(19,2) NULL DEFAULT NULL,
+	`tipomovimiento` VARCHAR(1) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`valor` DECIMAL(19,2) NULL DEFAULT NULL,
+	PRIMARY KEY (`ccuenta`, `cmovimiento`) USING BTREE,
+	CONSTRAINT `FKbn404f4hhs1236x91pbixn2ri` FOREIGN KEY (`ccuenta`) REFERENCES `pruebas`.`cuentaid` (`ccuenta`) ON UPDATE RESTRICT ON DELETE RESTRICT
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `hibernate_sequence` (
+	`next_not_cached_value` BIGINT(21) NOT NULL,
+	`minimum_value` BIGINT(21) NOT NULL,
+	`maximum_value` BIGINT(21) NOT NULL,
+	`start_value` BIGINT(21) NOT NULL COMMENT 'start value when sequences is created or value if RESTART is used',
+	`increment` BIGINT(21) NOT NULL COMMENT 'increment value',
+	`cache_size` BIGINT(21) UNSIGNED NOT NULL,
+	`cycle_option` TINYINT(1) UNSIGNED NOT NULL COMMENT '0 if no cycles are allowed, 1 if the sequence should begin a new cycle when maximum_value is passed',
+	`cycle_count` BIGINT(21) NOT NULL COMMENT 'How many cycles have been done'
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+

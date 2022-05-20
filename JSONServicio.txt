@@ -1,0 +1,148 @@
+Creacion de clientes:
+Metodo POST
+localhost:8080/cliente/save
+
+{
+        "nombre": "jose Lema",
+        "genero": "M",
+        "edad": 45,
+        "identificacion": "0102341522",
+        "direccion": "Otavalo sn y principal",
+        "telefono": "098254785",
+        "estado": true,
+        "contrasena": "1234"
+}
+
+{
+        "nombre": "Marianela Montalvo",
+        "genero": "F",
+        "edad": 35,
+        "identificacion": "0102341522",
+        "direccion": "Amazonas y NNUU",
+        "telefono": "097548965",
+        "estado": true,
+        "contrasena": "5678"
+}
+
+{
+        "nombre": "Juan Osorio",
+        "genero": "M",
+        "edad": 52,
+        "identificacion": "0102341522",
+        "direccion": "13 de Junio y Equinoccial",
+        "telefono": "098874587",
+        "estado": true,
+        "contrasena": "1245"
+}
+
+Creacion de cuentas:
+Metodo POST
+localhost:8080/cuenta/save
+
+{
+        "tipocuenta": "AHORRO",
+        "saldoinicial": 2000,
+        "estado": true,
+        "cliente": {
+        "cpersona": 1,   
+        "nombre": "jose Lema",
+        "genero": "M",
+        "edad": 45,
+        "identificacion": "0102341522",
+        "direccion": "Otavalo sn y principal",
+        "telefono": "098254785",
+        "estado": true,
+        "contrasena": "1234"
+},
+        "primaryKey": {
+                    "ccuenta": "478758",
+                    "fhasta":  ""
+}
+}
+
+
+{
+        "tipocuenta": "CORRIENTE",
+        "saldoinicial": 100,
+        "estado": true,
+        "cliente": {
+             "cpersona": 2,   
+            "nombre": "Marianela Montalvo",
+        "genero": "F",
+        "edad": 35,
+        "identificacion": "0102341522",
+        "direccion": "Amazonas y NNUU",
+        "telefono": "097548965",
+        "estado": true,
+        "contrasena": "5678"
+},
+        "primaryKey": {
+                    "ccuenta": "225487",
+                    "fhasta":  ""
+}
+}
+
+{
+        "tipocuenta": "AHORRO",
+        "saldoinicial": 0,
+        "estado": true,
+        "cliente": {
+            "cpersona": 3,
+        "nombre": "Juan Osorio",
+        "genero": "M",
+        "edad": 52,
+        "identificacion": "0102341522",
+        "direccion": "13 de Junio y Equinoccial",
+        "telefono": "098874587",
+        "estado": true,
+        "contrasena": "1245"
+},
+        "primaryKey": {
+                    "ccuenta": "495878",
+                    "fhasta":  ""
+}
+}
+
+{
+        "tipocuenta": "AHORRO",
+        "saldoinicial": 540,
+        "estado": true,
+        "cliente": {
+            "cpersona": 2,
+        "nombre": "Marianela Montalvo",
+        "genero": "F",
+        "edad": 35,
+        "identificacion": "0102341522",
+        "direccion": "Amazonas y NNUU",
+        "telefono": "097548965",
+        "estado": true,
+        "contrasena": "5678"
+},
+        "primaryKey": {
+                    "ccuenta": "496825",
+                    "fhasta":  ""
+}
+}
+
+
+{
+        "tipocuenta": "CORRIENTE",
+        "saldoinicial": 100,
+        "estado": true,
+        "cliente": {
+        "cpersona": 1,
+        "nombre": "jose Lema",
+        "genero": "M",
+        "edad": 45,
+        "identificacion": "0102341522",
+        "direccion": "Otavalo sn y principal",
+        "telefono": "098254785",
+        "estado": true,
+        "contrasena": "1234"
+},
+        "primaryKey": {
+                    "ccuenta": "585545",
+                    "fhasta":  ""
+}
+}
+
